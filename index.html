@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colorful Recommender & Journal</title>
+    <title>Aesthetic Recommender & Journal</title>
     <!-- New Font Imports -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles for a colorful and modern vibe */
+        /* Global Styles for an aesthetic and modern vibe */
         body {
-            font-family: 'Nunito', sans-serif; /* Changed font to Nunito */
+            font-family: 'Nunito', sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #D6EAF8; /* A slightly deeper light blue background */
-            color: #333; /* Darker text for contrast */
+            /* Subtle background gradient for depth */
+            background: linear-gradient(to bottom right, #D6EAF8, #E0F7FA); /* Light blue to very light blue */
+            color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            position: relative; /* Needed for fixed/absolute positioning of glowing circle */
+            overflow-x: hidden;
+            position: relative;
         }
 
         /* Glowing Circle Background (Static - NO MOVEMENT, NO FADING) */
@@ -34,17 +35,17 @@
             background-color: #2196F3; /* A vibrant blue for the core */
             border-radius: 50%;
             /* Use a very large, soft box-shadow to create the permanent, non-fading glow */
-            box-shadow: 0 0 250px 180px #2196F3; /* X-offset Y-offset Blur-radius Spread-radius Color */
-            opacity: 1; /* ABSOLUTELY NO FADING - fully opaque */
+            box-shadow: 0 0 280px 200px #2196F3; /* Slightly larger and more diffused glow */
+            opacity: 1;
             z-index: -1;
-            transform: translate(-50%, -50%); /* Keep it perfectly centered and static */
-            /* Explicitly no animation property here */
+            transform: translate(-50%, -50%);
         }
 
         .container {
             background-color: #FFFFFF;
             border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow for depth */
+            /* Softer, more diffused shadow for a floating effect */
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
             padding: 40px;
             max-width: 900px;
             width: 100%;
@@ -61,8 +62,8 @@
         }
 
         h1, h2 {
-            font-family: 'Poppins', sans-serif; /* Changed font for headings */
-            color: #2C3E50; /* Deep blue for headings */
+            font-family: 'Poppins', sans-serif;
+            color: #2C3E50;
             text-align: center;
             margin-bottom: 30px;
             font-weight: 700;
@@ -70,7 +71,8 @@
 
         /* About Button Style */
         #about-app-button {
-            background-color: #6A5ACD; /* Slate Blue */
+            /* Gradient background for aesthetic appeal */
+            background-image: linear-gradient(to bottom right, #7B68EE, #6A5ACD); /* Medium Slate Blue to Slate Blue */
             color: white;
             padding: 10px 20px;
             border: none;
@@ -78,18 +80,19 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: -15px; /* Pull it up closer to the title */
-            margin-bottom: 30px; /* Space below it */
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: block; /* Make it a block element to center with margin auto */
+            margin-top: -15px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease; /* Smooth transition for all properties */
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+            display: block;
             margin-left: auto;
             margin-right: auto;
         }
 
         #about-app-button:hover {
-            background-color: #483D8B; /* Darker Slate Blue */
-            transform: translateY(-2px);
+            background-image: linear-gradient(to bottom right, #6A5ACD, #483D8B); /* Darker gradient on hover */
+            transform: translateY(-3px); /* More pronounced lift */
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
         }
 
         .section {
@@ -104,7 +107,7 @@
             padding-bottom: 0;
         }
 
-        /* Mood Buttons - More colorful */
+        /* Mood Buttons - Gradient and Aesthetic */
         .mood-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -114,7 +117,7 @@
         }
 
         .mood-button {
-            background-color: #ADD8E6; /* Default light blue */
+            background-image: linear-gradient(to bottom right, #ADD8E6, #87CEEB); /* Light Blue gradient */
             color: #2C3E50;
             padding: 14px 28px;
             border: none;
@@ -123,33 +126,34 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
         }
 
-        .mood-button[data-mood="happy"] { background-color: #FFD700; color: #333; } /* Gold */
-        .mood-button[data-mood="sad"] { background-color: #B0C4DE; } /* Light steel blue */
-        .mood-button[data-mood="energetic"] { background-color: #FF6347; color: white; } /* Tomato */
-        .mood-button[data-mood="relaxed"] { background-color: #98FB98; color: #333; } /* Pale green */
-        .mood-button[data-mood="bored"] { background-color: #D3D3D3; } /* Light grey */
+        .mood-button[data-mood="happy"] { background-image: linear-gradient(to bottom right, #FFD700, #FFC107); color: #333; } /* Gold gradient */
+        .mood-button[data-mood="sad"] { background-image: linear-gradient(to bottom right, #B0C4DE, #87CEEB); } /* Light steel blue gradient */
+        .mood-button[data-mood="energetic"] { background-image: linear-gradient(to bottom right, #FF6347, #E91E63); color: white; } /* Tomato gradient */
+        .mood-button[data-mood="relaxed"] { background-image: linear-gradient(to bottom right, #98FB98, #66CDAA); color: #333; } /* Pale green gradient */
+        .mood-button[data-mood="bored"] { background-image: linear-gradient(to bottom right, #D3D3D3, #A9A9A9); } /* Light grey gradient */
 
         .mood-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px); /* More lift on hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18); /* Stronger shadow on hover */
         }
 
         .mood-button.selected {
-            transform: translateY(-5px); /* More pronounced lift when selected */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-            border: 2px solid #2C3E50; /* Stronger border for selection */
+            transform: translateY(-6px); /* Even more pronounced lift when selected */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Very strong shadow for selection */
+            border: 3px solid #2C3E50; /* Thicker, stronger border for selection */
         }
-        .mood-button[data-mood="happy"].selected { background-color: #FFC107; }
-        .mood-button[data-mood="sad"].selected { background-color: #87CEEB; }
-        .mood-button[data-mood="energetic"].selected { background-color: #E91E63; }
-        .mood-button[data-mood="relaxed"].selected { background-color: #4CAF50; }
-        .mood-button[data-mood="bored"].selected { background-color: #607D8B; color: white; }
+        /* Selected states for gradients - slightly darker versions */
+        .mood-button[data-mood="happy"].selected { background-image: linear-gradient(to bottom right, #FFC107, #FFA000); }
+        .mood-button[data-mood="sad"].selected { background-image: linear-gradient(to bottom right, #87CEEB, #6A5ACD); }
+        .mood-button[data-mood="energetic"].selected { background-image: linear-gradient(to bottom right, #E91E63, #C2185B); }
+        .mood-button[data-mood="relaxed"].selected { background-image: linear-gradient(to bottom right, #66CDAA, #388E3C); }
+        .mood-button[data-mood="bored"].selected { background-image: linear-gradient(to bottom right, #A9A9A9, #757575); }
 
 
-        /* Type Selection Buttons */
+        /* Type Selection Buttons - Gradient and Aesthetic */
         .type-selection {
             display: flex;
             flex-wrap: wrap;
@@ -160,7 +164,7 @@
         }
 
         .type-button {
-            background-color: #D4E6F1; /* Soft pastel blue */
+            background-image: linear-gradient(to bottom right, #B0E0E6, #87CEEB); /* Powder Blue to Sky Blue gradient */
             color: #2C3E50;
             padding: 10px 20px;
             border: none;
@@ -168,24 +172,26 @@
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .type-button:hover {
-            background-color: #C0D9EB;
-            transform: translateY(-2px);
+            background-image: linear-gradient(to bottom right, #87CEEB, #5DADE2); /* Darker blue gradient on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .type-button.selected {
-            background-color: #3498DB; /* More vibrant blue when selected */
+            background-image: linear-gradient(to bottom right, #3498DB, #2E86C1); /* Vibrant blue gradient when selected */
             color: white;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
         }
 
         /* Recommendations Display */
         #recommendations {
-            background-color: #EBF5FB; /* Very light blue background */
+            background-color: #EBF5FB; /* Slightly adjusted light blue background */
             border: 1px solid #D6EAF8;
             border-radius: 15px;
             padding: 30px;
@@ -201,6 +207,7 @@
             transition: all 0.5s ease-in-out;
             opacity: 0;
             transform: translateY(20px);
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
         }
 
         #recommendations.show {
@@ -222,9 +229,9 @@
             font-weight: 500;
         }
 
-        /* New Refresh Button Style */
+        /* New Refresh Button Style - Gradient and Aesthetic */
         #refresh-recommendation-button {
-            background-color: #1ABC9C; /* Teal */
+            background-image: linear-gradient(to bottom right, #1ABC9C, #16A085); /* Teal gradient */
             color: white;
             padding: 10px 20px;
             border: none;
@@ -232,14 +239,15 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 20px; /* Space below recommendations */
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
         }
 
         #refresh-recommendation-button:hover {
-            background-color: #16A085; /* Darker teal */
-            transform: translateY(-2px);
+            background-image: linear-gradient(to bottom right, #16A085, #138D75); /* Darker teal gradient on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
         }
 
         /* Journal Form */
@@ -247,10 +255,10 @@
             display: flex;
             flex-direction: column;
             gap: 18px;
-            padding: 25px; /* Increased padding */
-            border-radius: 18px; /* More rounded */
+            padding: 25px;
+            border-radius: 18px;
             background-color: #F8F9FA;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.08); /* Stronger inner shadow */
+            box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.1); /* Stronger inner shadow */
         }
 
         .journal-form .mood-selection-for-journal {
@@ -262,14 +270,14 @@
         }
 
         .journal-form .mood-selection-for-journal .mood-button {
-            padding: 8px 15px; /* Smaller buttons for journal form */
+            padding: 8px 15px;
             font-size: 14px;
-            box-shadow: none; /* No extra shadow on these */
-            border: 1px solid transparent; /* Default transparent border */
+            box-shadow: none;
+            border: 1px solid transparent;
         }
         .journal-form .mood-selection-for-journal .mood-button.selected {
-            border: 2px solid #2C3E50; /* Highlight with border */
-            transform: none; /* No lift for these smaller buttons */
+            border: 2px solid #2C3E50;
+            transform: none;
             box-shadow: none;
         }
 
@@ -289,7 +297,7 @@
         .journal-form textarea:focus {
             outline: none;
             border-color: #3498DB;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.25); /* Stronger focus shadow */
         }
 
         .journal-form textarea {
@@ -297,8 +305,9 @@
             resize: vertical;
         }
 
+        /* Journal Submit Button - Gradient and Aesthetic */
         .journal-form button[type="submit"] {
-            background-color: #5DADE2;
+            background-image: linear-gradient(to bottom right, #5DADE2, #3498DB); /* Blue gradient */
             color: white;
             padding: 15px 25px;
             border: none;
@@ -306,19 +315,19 @@
             font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18); /* Stronger shadow */
         }
 
         .journal-form button[type="submit"]:hover {
-            background-color: #2E86C1;
+            background-image: linear-gradient(to bottom right, #3498DB, #2E86C1); /* Darker blue gradient on hover */
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 7px 18px rgba(0, 0, 0, 0.28);
         }
 
         .journal-form button[type="submit"]:active {
             transform: translateY(0);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
         }
 
         /* Journal Entries Display */
@@ -330,7 +339,7 @@
             padding: 15px;
             background-color: #FDFEFE;
             border-radius: 15px;
-            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Stronger inner shadow */
         }
 
         .journal-entry {
@@ -338,7 +347,7 @@
             border: 1px solid #EAECEF;
             border-radius: 15px;
             padding: 25px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Softer, larger shadow */
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: slideInFromLeft 0.5s ease-out;
@@ -362,12 +371,12 @@
         }
 
         .journal-entry:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px); /* More lift on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
         }
 
         .journal-entry h3 {
-            font-family: 'Poppins', sans-serif; /* Changed font for headings */
+            font-family: 'Poppins', sans-serif;
             margin-top: 0;
             color: #2C3E50;
             font-size: 1.3em;
@@ -506,7 +515,7 @@
             .glowing-circle {
                 width: 250px;
                 height: 250px;
-                box-shadow: 0 0 150px 100px #2196F3; /* Adjusted for smaller screens */
+                box-shadow: 0 0 180px 120px #2196F3; /* Adjusted for smaller screens */
             }
         }
 
@@ -568,7 +577,7 @@
             .glowing-circle {
                 width: 10px;
                 height: 10px;
-                box-shadow: 0 0 100px 80px #2196F3; /* Adjusted for smallest screens */
+                box-shadow: 0 0 120px 90px #2196F3; /* Adjusted for smallest screens */
             }
         }
     </style>
@@ -578,7 +587,7 @@
 
     <div class="container">
         <h1>VibeSync</h1>
-        <button id="about-app-button">About This App</button> <!-- New button added here -->
+        <button id="about-app-button">About This App</button>
 
         <div class="section">
             <h2>How are you feeling today?</h2>
@@ -738,7 +747,7 @@
         const messageBoxOverlay = document.getElementById('messageBoxOverlay');
         const messageBoxContent = document.getElementById('messageBoxContent');
         const messageBoxOkButton = document.getElementById('messageBoxOkButton');
-        const aboutAppButton = document.getElementById('about-app-button'); // Get the new button
+        const aboutAppButton = document.getElementById('about-app-button');
 
         // Variables to store current selections
         let currentMood = null;
@@ -933,3 +942,4 @@
     </script>
 </body>
 </html>
+
